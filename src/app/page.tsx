@@ -106,6 +106,7 @@ export default function HomePage() {
   >([]);
   const [inputMessage, setInputMessage] = useState("");
   const [showSubmenu, setShowSubmenu] = useState(false);
+  const [showIntroContent, setShowIntroContent] = useState(false);
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -201,42 +202,78 @@ export default function HomePage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-12 sm:pb-16 space-y-16 sm:space-y-20">
-        {/* INTRO NIRDE SECTION */}
-        <section className="pt-10 sm:pt-14">
-          <div className="bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-lg p-6 sm:p-10 max-w-5xl mx-auto space-y-4 sm:space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
-              Qu’est-ce que NIRDE ?
-            </h2>
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-10 sm:pb-12 space-y-10 sm:space-y-12">
+        {/* INTRO NIRDE SECTION – background blanc */}
+        <section className="pt-8 sm:pt-10">
+          <div className="relative max-w-5xl mx-auto overflow-hidden rounded-3xl border border-slate-200 shadow-lg bg-white">
+            
+            {/* Contenu */}
+            <div className="relative px-4 sm:px-6 md:px-8 py-8 sm:py-10 flex flex-col items-center text-center gap-4 sm:gap-5">
+              
+              {/* Logo cliquable, plus petit et responsive */}
+              <button
+                type="button"
+                onClick={() => setShowIntroContent((prev) => !prev)}
+                className={`transition-all duration-700 ease-out transform ${
+                  showIntroContent
+                    ? "scale-75 -translate-y-1 opacity-40"
+                    : "hover:scale-105 opacity-100"
+                }`}
+              >
+                <img
+                  src="/nird.png"
+                  alt="NIRD Logo"
+                  className="w-60 sm:w-60 md:w-60 h-auto drop-shadow-xl rounded-xl"
+                />
+              </button>
 
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-              <strong>NIRDE</strong> est une plateforme conçue pour aider les utilisateurs à 
-              choisir le système d’exploitation le mieux adapté à leurs besoins.  
-              Aujourd’hui, beaucoup d’entreprises possèdent des ordinateurs anciens 
-              ou lents, et se demandent s’il vaut mieux acheter du nouveau matériel 
-              ou optimiser l’existant avec un système plus performant comme Linux.
-            </p>
+              {/* Texte avant clic */}
+              {!showIntroContent && (
+                <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
+                  Clique sur le logo NIRD pour découvrir la démarche Numérique
+                  Inclusive, Responsable et Durable.
+                </p>
+              )}
 
-            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-              Notre objectif est simple :  
-              <strong className="text-slate-900">vous fournir une comparaison claire, accessible et complète </strong>
-              entre Linux, Windows et macOS.  
-              Nous vous guidons à travers 10 facteurs essentiels pour vous aider à 
-              faire un choix éclairé.
-            </p>
+              {/* Contenu après clic */}
+              {showIntroContent && (
+                <div className="animate-fadeIn space-y-3 sm:space-y-4 max-w-3xl text-left sm:text-center text-slate-700">
+                  <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                    Qu’est-ce que la démarche NIRDE ?
+                  </h2>
 
-            <div className="bg-gradient-to-r from-cyan-100 to-purple-100 border border-cyan-300 rounded-2xl p-4 sm:p-5">
-              <p className="text-sm sm:text-base text-cyan-800 font-semibold">
-                🎯 Objectif : Vous permettre d’économiser de l’argent, d’améliorer 
-                les performances de vos machines, et de choisir une solution adaptée 
-                à votre environnement.
-              </p>
+                  <p className="text-sm sm:text-base leading-relaxed">
+                    <strong>NIRDE</strong> s’inscrit dans une vision{" "}
+                    <strong>inclusive, durable et responsable</strong> : redonner vie
+                    aux ordinateurs anciens grâce à Linux, réduire les coûts,
+                    diminuer les déchets électroniques et faciliter l'accès au
+                    numérique pour tous.
+                  </p>
+
+                  <p className="text-sm sm:text-base leading-relaxed">
+                    Le projet aide les établissements à répondre à une question simple :
+                    <strong> moderniser l’existant avec Linux ou investir dans de nouvelles
+                    machines Windows / macOS ?</strong>  
+                    Un choix à la fois technique, économique et écologique.
+                  </p>
+
+                  <div className="bg-gradient-to-r from-cyan-50 to-purple-50 border border-slate-200 rounded-2xl p-4 sm:p-5">
+                    <p className="text-sm sm:text-base text-slate-700 font-semibold">
+                      🎯 Objectif : montrer qu’un parc rééquipé sous Linux peut devenir
+                      un outil moderne, performant et durable, parfaitement adapté aux
+                      besoins pédagogiques et professionnels.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
+
+
         {/* HERO SECTION */}
-        <section id="overview" className="pt-10 sm:pt-16 lg:pt-24">
+        <section id="overview" className="pt-4 sm:pt-6 lg:pt-10">
           <div className="grid lg:grid-cols-1 gap-8 sm:gap-12 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-cyan-100 to-purple-100 border border-cyan-300">
