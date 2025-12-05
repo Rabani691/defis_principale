@@ -168,7 +168,7 @@ export default function HomePage() {
                 href="https://chatbruti-404.vercel.app/"
                 className="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg transition-all"
               >
-                💬 Discuter avec IA
+                Pas encore convaincu par le logiciel libre ? Discute avec l’IA — elle saura te convaincre.
               </a>
             </nav>
           </div>
