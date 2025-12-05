@@ -14,7 +14,6 @@ const FACTORS = [
     othersText:
       "À l’inverse, les systèmes comme Windows ou macOS ont tendance à être plus stricts sur la licence : il faut payer pour l’utiliser légalement, et les modifications personnelles sont limitées. Si vous essayez de bricoler trop, vous risquez de vous retrouver face à un joli panneau “Accès refusé”.",
     memeSrc: "/mms/licence.jpg",
-    
   },
   {
     id: "securite",
@@ -108,7 +107,6 @@ export default function HomePage() {
   const [inputMessage, setInputMessage] = useState("");
   const [showSubmenu, setShowSubmenu] = useState(false);
 
-
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
@@ -151,81 +149,83 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
       {/* NAVBAR */}
       <header className="sticky top-0 z-30 backdrop-blur-xl bg-white/80 border-b border-slate-200 shadow-sm">
-        <div className="mx-auto max-w-7xl px-6 py-4">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 NIRDE
               </h1>
-              <p className="text-sm text-slate-600 mt-1">
-                Choisi le meilleur sys pour toi 
+              <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                Choisi le meilleur sys pour toi
               </p>
             </div>
 
-            <nav className="flex gap-2 flex-wrap">
+            <nav className="relative flex gap-2 flex-wrap items-center justify-start lg:justify-end">
               <Anchor href="#overview" label="Vue d'ensemble" />
-              <button
-                onClick={() => setShowSubmenu(!showSubmenu)}
-                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all"
-              >
-                Comparatif détaillé ▾
-              </button>
-              {showSubmenu && (
-                <div className="absolute mt-2 bg-white shadow-lg border border-slate-200 rounded-xl p-3 z-50">
-                  <div className="flex flex-col gap-1 w-64">
-                    {FACTORS.map((factor) => (
-                      <a
-                        key={factor.id}
-                        href={`#${factor.id}`}
-                        onClick={() => setShowSubmenu(false)}
-                        className="px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-100 transition"
-                      >
-                        {factor.title}
-                      </a>
-                    ))}
+
+              {/* Dropdown Comparatif détaillé */}
+              <div className="relative">
+                <button
+                  onClick={() => setShowSubmenu((prev) => !prev)}
+                  className="px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all flex items-center gap-1"
+                >
+                  Comparatif détaillé
+                  <span className="text-xs">▾</span>
+                </button>
+                {showSubmenu && (
+                  <div className="absolute left-0 top-full mt-2 w-56 sm:w-64 bg-white shadow-lg border border-slate-200 rounded-xl p-2 sm:p-3 z-50">
+                    <div className="flex flex-col gap-1 max-h-80 overflow-y-auto">
+                      {FACTORS.map((factor) => (
+                        <a
+                          key={factor.id}
+                          href={`#${factor.id}`}
+                          onClick={() => setShowSubmenu(false)}
+                          className="px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm text-slate-700 hover:bg-slate-100 transition"
+                        >
+                          {factor.title}
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-
-
-              
+                )}
+              </div>
 
               <a
-                // onClick={() => setShowChat(true)}
                 href="https://chatbruti-404.vercel.app/"
-                className="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg transition-all"
+                className="mt-1 sm:mt-0 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg transition-all text-center"
               >
-                Pas encore convaincu par le logiciel libre ? Discute avec l’IA — elle saura te convaincre.
+                Pas encore convaincu ? Discute avec l’IA.
               </a>
             </nav>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-6 pb-16 space-y-20">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-12 sm:pb-16 space-y-16 sm:space-y-20">
         {/* HERO SECTION */}
-        <section id="overview" className="pt-16 lg:pt-24">
-          <div className="grid lg:grid-cols-1 gap-12 items-center">
+        <section id="overview" className="pt-10 sm:pt-16 lg:pt-24">
+          <div className="grid lg:grid-cols-1 gap-8 sm:gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-100 to-purple-100 border border-cyan-300">
-                <span className="text-2xl">🚀</span>
-                <span className="text-sm text-cyan-700 font-medium">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-cyan-100 to-purple-100 border border-cyan-300">
+                <span className="text-xl sm:text-2xl">🚀</span>
+                <span className="text-xs sm:text-sm text-cyan-700 font-medium">
                   Comparaison détaillée
                 </span>
               </div>
 
-              <p className="text-4xl lg:text-5xl font-bold leading-tight">
+              <p className="text-2xl sm:text-3xl lg:text-5xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-slate-900 via-purple-900 to-cyan-900 bg-clip-text text-transparent">
                   Vos ordinateurs sont anciens
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
-                  Allez-vous acheter de nouvelles machines Windows ou installer
-                  Linux ?
+                  Allez-vous acheter de nouvelles machines Windows
+                  <span className="hidden sm:inline"> </span>
+                  ou installer Linux ?
                 </span>
               </p>
 
-              <p className="text-lg text-slate-700 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl">
                 Explorez les forces et faiblesses de{" "}
                 <strong className="text-slate-900">Linux</strong>,{" "}
                 <strong className="text-slate-900">Windows</strong> et{" "}
@@ -234,7 +234,7 @@ export default function HomePage() {
               </p>
 
               <div className="space-y-3">
-                <p className="text-sm text-slate-600 font-medium">
+                <p className="text-xs sm:text-sm text-slate-600 font-medium">
                   Filtrer l’affichage :
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -261,7 +261,7 @@ export default function HomePage() {
 
               <a
                 href="#factors"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold shadow-lg shadow-purple-500/50 hover:shadow-purple-500/70 hover:scale-105 transition-all"
+                className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm sm:text-base font-semibold shadow-lg shadow-purple-500/50 hover:shadow-purple-500/70 hover:scale-105 transition-all"
               >
                 Commencer l'exploration
                 <span>→</span>
@@ -271,48 +271,52 @@ export default function HomePage() {
         </section>
 
         {/* FACTORS SECTION */}
-        <section id="factors" className="scroll-mt-24 space-y-10">
+        <section id="factors" className="scroll-mt-24 space-y-8 sm:space-y-10">
           <div>
-            <h3 className="text-4xl font-bold text-slate-900 mb-3">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 sm:mb-3">
               Comparatif Linux vs Windows & macOS
             </h3>
-            <p className="text-lg text-slate-600 max-w-3xl">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 max-w-3xl">
               Chaque carte ci-dessous reprend un facteur important (licence,
               sécurité, performance, etc.) avec une comparaison claire entre
               Linux et le duo Windows/macOS, accompagnée d’un meme illustratif.
             </p>
           </div>
 
-          <div className="space-y-10">
-        {FACTORS.map((factor, index) => (
-          <section
-            key={factor.id}
-            id={factor.id}
-            className="scroll-mt-28"
-          >
-            <FactorCard
-              index={index + 1}
-              title={factor.title}
-              linuxText={factor.linuxText}
-              othersText={factor.othersText}
-              memeSrc={factor.memeSrc}
-              focusedOS={focusedOS}
-            />
-          </section>
-        ))}
-      </div>
-
+          <div className="space-y-8 sm:space-y-10">
+            {FACTORS.map((factor, index) => (
+              <section
+                key={factor.id}
+                id={factor.id}
+                className="scroll-mt-24 sm:scroll-mt-28"
+              >
+                <FactorCard
+                  index={index + 1}
+                  title={factor.title}
+                  linuxText={factor.linuxText}
+                  othersText={factor.othersText}
+                  memeSrc={factor.memeSrc}
+                  focusedOS={focusedOS}
+                />
+              </section>
+            ))}
+          </div>
         </section>
       </main>
 
       {/* FOOTER */}
       <footer className="border-t border-slate-200 bg-white/80 backdrop-blur-xl">
+        {/* Le jeu prend toute la largeur avec scroll horizontal si besoin sur mobile */}
+        <div className="w-full overflow-x-auto">
+          <div className="min-w-[320px] max-w-5xl mx-auto">
+            <TuxResistance />
+          </div>
+        </div>
 
-      <TuxResistance></TuxResistance>
-        <div className="mx-auto max-w-7xl px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-            <p>© 2025 NIRD </p>
-            <p className="text-xs text-slate-500">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2 sm:gap-4 text-xs sm:text-sm text-slate-600 text-center md:text-left">
+            <p>© 2025 NIRD</p>
+            <p className="text-[10px] sm:text-xs text-slate-500">
               Créé par GROUPE 404 pour aider les utilisateurs à faire des choix
             </p>
           </div>
@@ -328,7 +332,7 @@ function Anchor({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
-      className="px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all"
+      className="px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all"
     >
       {label}
     </a>
@@ -347,7 +351,7 @@ function FilterButton({
   return (
     <button
       onClick={onClick}
-      className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+      className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
         active
           ? "bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-purple-500/50"
           : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 shadow-sm"
@@ -374,52 +378,54 @@ function FactorCard({
   focusedOS: FocusOS;
 }) {
   return (
-    <article className="rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-xl shadow-lg shadow-slate-200/60 overflow-hidden">
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,2fr)_minmax(0,1.4fr)] p-6 lg:p-8">
+    <article className="rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-xl shadow-md sm:shadow-lg shadow-slate-200/60 overflow-hidden">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-3 p-4 sm:p-6 lg:p-8">
         {/* Text zone */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 text-white text-sm font-bold">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="inline-flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 text-white text-xs sm:text-sm font-bold">
               {index}
             </span>
-            <h4 className="text-xl font-bold text-slate-900">{title}</h4>
+            <h4 className="text-lg sm:text-xl font-bold text-slate-900">
+              {title}
+            </h4>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
             {/* Linux card */}
             <div
-              className={`rounded-2xl border bg-gradient-to-br from-cyan-50 to-white p-4 shadow-sm transition-all ${
+              className={`rounded-2xl border bg-gradient-to-br from-cyan-50 to-white p-3 sm:p-4 shadow-sm transition-all ${
                 focusedOS !== "all" && focusedOS !== "Linux"
                   ? "opacity-40"
                   : "opacity-100"
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-2xl">🐧</span>
-                <span className="text-sm font-semibold text-cyan-700">
+                <span className="text-xl sm:text-2xl">🐧</span>
+                <span className="text-xs sm:text-sm font-semibold text-cyan-700">
                   Linux
                 </span>
               </div>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                 {linuxText}
               </p>
             </div>
 
             {/* Windows + macOS card */}
             <div
-              className={`rounded-2xl border bg-gradient-to-br from-slate-50 to-white p-4 shadow-sm transition-all ${
+              className={`rounded-2xl border bg-gradient-to-br from-slate-50 to-white p-3 sm:p-4 shadow-sm transition-all ${
                 focusedOS !== "all" && focusedOS !== "Windows/macOS"
                   ? "opacity-40"
                   : "opacity-100"
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-2xl">🪟🍎</span>
-                <span className="text-sm font-semibold text-slate-800">
+                <span className="text-xl sm:text-2xl">🪟🍎</span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800">
                   Windows & macOS
                 </span>
               </div>
-              <p className="text-sm text-slate-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                 {othersText}
               </p>
             </div>
@@ -427,13 +433,13 @@ function FactorCard({
         </div>
 
         {/* Meme zone */}
-          <div className="flex items-start">
-            <img
-              src={memeSrc}
-              alt={title}
-              className="w-full h-auto rounded-2xl border border-slate-200 object-contain"
-            />
-          </div>
+        <div className="flex items-start justify-center">
+          <img
+            src={memeSrc}
+            alt={title}
+            className="w-full max-w-xs sm:max-w-sm h-auto rounded-2xl border border-slate-200 object-contain"
+          />
+        </div>
       </div>
     </article>
   );
