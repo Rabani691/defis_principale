@@ -107,6 +107,8 @@ export default function HomePage() {
   const [inputMessage, setInputMessage] = useState("");
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [showIntroContent, setShowIntroContent] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
+
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -154,7 +156,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                NIRDE
+                NIRD
               </h1>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
                 Choisi le meilleur sys pour toi
@@ -203,7 +205,7 @@ export default function HomePage() {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-10 sm:pb-12 space-y-10 sm:space-y-12">
-        {/* INTRO NIRDE SECTION – background blanc */}
+        {/* INTRO NIRD SECTION – background blanc */}
         <section className="pt-8 sm:pt-10">
           <div className="relative max-w-5xl mx-auto overflow-hidden rounded-3xl border border-slate-200 shadow-lg bg-white">
             
@@ -239,11 +241,11 @@ export default function HomePage() {
               {showIntroContent && (
                 <div className="animate-fadeIn space-y-3 sm:space-y-4 max-w-3xl text-left sm:text-center text-slate-700">
                   <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
-                    Qu’est-ce que la démarche NIRDE ?
+                    Qu’est-ce que la démarche NIRD ?
                   </h2>
 
                   <p className="text-sm sm:text-base leading-relaxed">
-                    <strong>NIRDE</strong> s’inscrit dans une vision{" "}
+                    <strong>NIRD</strong> s’inscrit dans une vision{" "}
                     <strong>inclusive, durable et responsable</strong> : redonner vie
                     aux ordinateurs anciens grâce à Linux, réduire les coûts,
                     diminuer les déchets électroniques et faciliter l'accès au
@@ -376,12 +378,24 @@ export default function HomePage() {
 
       {/* FOOTER */}
       <footer className="border-t border-slate-200 bg-white/80 backdrop-blur-xl">
-        {/* Le jeu prend toute la largeur avec scroll horizontal si besoin sur mobile */}
+        {/* Zone du jeu avec bouton démarrage */}
         <div className="w-full overflow-x-auto">
-          <div className="min-w-[320px] max-w-5xl mx-auto">
-            <TuxResistance />
+          <div className="min-w-[320px] max-w-5xl mx-auto flex flex-col items-center py-4 gap-4">
+            {!gameStarted && (
+              <button
+                onClick={() => setGameStarted(true)}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white text-sm sm:text-base font-semibold shadow-lg hover:scale-105 transition"
+              >
+                🎮 Démarrer le jeu de Votre Nird
+              </button>
+            )}
+
+            {gameStarted && (
+              <TuxResistance />
+            )}
           </div>
         </div>
+
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6 sm:py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 sm:gap-4 text-xs sm:text-sm text-slate-600 text-center md:text-left">
