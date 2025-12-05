@@ -22,7 +22,7 @@ const FACTORS = [
       "Linux est comme un gardien vigilant 🛡️ : les virus et malwares ont du mal à passer. Sa communauté repère vite les failles et les corrige.",
     othersText:
       "Windows, très populaire, attire beaucoup plus d’attaques, tandis que macOS est globalement plus sûr, mais reste loin d’être invincible.",
-    memeSrc: "/mms/security_meems.jpg",
+    memeSrc: "/mms/security.jpg",
   },
   {
     id: "performance",
@@ -40,7 +40,7 @@ const FACTORS = [
       "Linux adore les logiciels libres et open-source, avec un énorme catalogue disponible.",
     othersText:
       "Certains programmes populaires (jeux, logiciels pro) ne sont pas toujours disponibles directement sous Linux. Windows, lui, parle à presque tout le monde, tandis que macOS reste un peu plus sélectif.",
-    memeSrc: "/mms/04-compatibilite.jpg",
+    memeSrc: "/mms/compatibilit.jpg",
   },
   {
     id: "personnalisation",
@@ -49,7 +49,7 @@ const FACTORS = [
       "Avec Linux, vous pouvez tout changer : l’apparence, le menu, le bureau… même le moindre petit détail. C’est comme un Lego infini pour votre PC !",
     othersText:
       "Windows et macOS offrent moins de liberté : vous pouvez changer quelques pièces, mais pas reconstruire le château entier.",
-    memeSrc: "/mms/05-personnalisation.jpg",
+    memeSrc: "/mms/personalisation.jpg",
   },
   {
     id: "stabilite",
@@ -58,7 +58,7 @@ const FACTORS = [
       "Linux est généralement très stable : les plantages sont rares et les mises à jour arrivent régulièrement, souvent sans interrompre votre travail.",
     othersText:
       "Windows peut parfois redémarrer quand on s’y attend le moins, et macOS reste stable, mais avec moins de contrôle laissé à l’utilisateur sur les mises à jour.",
-    memeSrc: "/mms/06-stabilite.jpg",
+    memeSrc: "/mms/mis_ajour.jpg",
   },
   {
     id: "materiel",
@@ -67,7 +67,7 @@ const FACTORS = [
       "Linux supporte la majorité des matériels courants, surtout ceux qui ont quelques années.",
     othersText:
       "Certains périphériques très récents ou très propriétaires peuvent poser problème sous Linux. macOS, lui, fonctionne parfaitement… mais uniquement sur ses propres machines.",
-    memeSrc: "/mms/07-materiel.jpg",
+    memeSrc: "/mms/old_meems.jpg",
   },
   {
     id: "facilite",
@@ -76,7 +76,7 @@ const FACTORS = [
       "Linux peut demander un petit temps d’adaptation pour les débutants, mais une fois qu’on le connaît, c’est un vrai plaisir.",
     othersText:
       "Windows est simple et familier pour la majorité des gens, tandis que macOS est intuitif, élégant… et parfois un peu trop verrouillé.",
-    memeSrc: "/mms/08-facilite.jpg",
+    memeSrc: "/mms/facilit.jpg",
   },
   {
     id: "ecosysteme",
@@ -85,7 +85,7 @@ const FACTORS = [
       "Linux a une communauté très active : forums, tutoriels et aides en ligne à profusion.",
     othersText:
       "Windows et macOS offrent un support officiel solide, mais parfois payant ou limité aux guides officiels.",
-    memeSrc: "/mms/09-ecosysteme.jpg",
+    memeSrc: "/mms/eco.jpg",
   },
   {
     id: "publicite",
@@ -94,7 +94,7 @@ const FACTORS = [
       "Linux est presque toujours sans pubs : pas de pop-ups ni de bannières qui vous interrompent.",
     othersText:
       "Windows et certains logiciels intégrés peuvent vous envoyer des pubs ou des « suggestions », un peu comme un vendeur insistant qui frappe à votre porte.",
-    memeSrc: "/mms/10-publicite.jpg",
+    memeSrc: "/mms/ads.jpg",
   },
 ];
 
@@ -155,7 +155,7 @@ export default function HomePage() {
                 NIRDE
               </h1>
               <p className="text-sm text-slate-600 mt-1">
-                Linux • Windows • macOS
+                Choisi le meilleur sys pour toi 
               </p>
             </div>
 
@@ -274,9 +274,9 @@ export default function HomePage() {
       <footer className="border-t border-slate-200 bg-white/80 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-600">
-            <p>© 2024 OS Comparator • Design moderne avec React & Tailwind</p>
+            <p>© 2025 NIRD </p>
             <p className="text-xs text-slate-500">
-              Made with 💜 for better tech choices
+              Créé par GROUPE 404 pour aider les utilisateurs à faire des choix
             </p>
           </div>
         </div>
@@ -390,15 +390,13 @@ function FactorCard({
         </div>
 
         {/* Meme zone */}
-        <div className="flex items-stretch">
-          <div className="relative w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-900/5">
+          <div className="flex items-start">
             <img
               src={memeSrc}
               alt={title}
-              className="w-full h-full object-cover"
+              className="w-full h-auto rounded-2xl border border-slate-200 object-contain"
             />
           </div>
-        </div>
       </div>
     </article>
   );
