@@ -1,5 +1,6 @@
 "use client";
 
+import TuxResistance from "@/components/TuxResistance";
 import { useState } from "react";
 
 type FocusOS = "all" | "Linux" | "Windows/macOS";
@@ -162,12 +163,13 @@ export default function HomePage() {
             <nav className="flex gap-2 flex-wrap">
               <Anchor href="#overview" label="Vue d'ensemble" />
               <Anchor href="#factors" label="Comparatif détaillé" />
-              <button
-                onClick={() => setShowChat(true)}
+              <a
+                // onClick={() => setShowChat(true)}
+                href="https://chatbruti-404.vercel.app/"
                 className="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:shadow-lg transition-all"
               >
-                💬 Discuter avec IA
-              </button>
+                Pas encore convaincu par le logiciel libre ? Discute avec l’IA — elle saura te convaincre.
+              </a>
             </nav>
           </div>
         </div>
@@ -272,6 +274,8 @@ export default function HomePage() {
 
       {/* FOOTER */}
       <footer className="border-t border-slate-200 bg-white/80 backdrop-blur-xl">
+
+      <TuxResistance></TuxResistance>
         <div className="mx-auto max-w-7xl px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-600">
             <p>© 2025 NIRD </p>
