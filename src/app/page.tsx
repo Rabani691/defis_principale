@@ -202,6 +202,39 @@ export default function HomePage() {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 pb-12 sm:pb-16 space-y-16 sm:space-y-20">
+        {/* INTRO NIRDE SECTION */}
+        <section className="pt-10 sm:pt-14">
+          <div className="bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl shadow-lg p-6 sm:p-10 max-w-5xl mx-auto space-y-4 sm:space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+              Qu’est-ce que NIRDE ?
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              <strong>NIRDE</strong> est une plateforme conçue pour aider les utilisateurs à 
+              choisir le système d’exploitation le mieux adapté à leurs besoins.  
+              Aujourd’hui, beaucoup d’entreprises possèdent des ordinateurs anciens 
+              ou lents, et se demandent s’il vaut mieux acheter du nouveau matériel 
+              ou optimiser l’existant avec un système plus performant comme Linux.
+            </p>
+
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+              Notre objectif est simple :  
+              <strong className="text-slate-900">vous fournir une comparaison claire, accessible et complète </strong>
+              entre Linux, Windows et macOS.  
+              Nous vous guidons à travers 10 facteurs essentiels pour vous aider à 
+              faire un choix éclairé.
+            </p>
+
+            <div className="bg-gradient-to-r from-cyan-100 to-purple-100 border border-cyan-300 rounded-2xl p-4 sm:p-5">
+              <p className="text-sm sm:text-base text-cyan-800 font-semibold">
+                🎯 Objectif : Vous permettre d’économiser de l’argent, d’améliorer 
+                les performances de vos machines, et de choisir une solution adaptée 
+                à votre environnement.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* HERO SECTION */}
         <section id="overview" className="pt-10 sm:pt-16 lg:pt-24">
           <div className="grid lg:grid-cols-1 gap-8 sm:gap-12 items-center">
