@@ -13,49 +13,84 @@ const GAME_CONFIG = {
   MEME_CYCLE_TIME: 10000,
 };
 
-// Enemy types with humorous Windows/Mac problems
+ // Types d’ennemis avec humour sur Windows/Mac
 const ENEMY_TYPES = [
-  { name: 'ADS', label: 'ADS', emoji: '📢', color: '#ff6b6b', points: 10, health: 1, speed: 1, deathQuip: '"Your free trial has ended!"' },
-  { name: 'FORCE UPDATES', label: 'FORCE\nUPDATES', emoji: '🔄', color: '#ffd93d', points: 15, health: 1, speed: 0.8, deathQuip: '"Updating... JK, freedom wins!"' },
-  { name: 'LICENSE', label: 'LICENSE', emoji: '📜', color: '#ff9f43', points: 20, health: 2, speed: 0.7, deathQuip: '"No license? No problem with FOSS!"' },
-  { name: 'VULNERABILITY', label: 'VULN', emoji: '🔓', color: '#ee5a5a', points: 25, health: 2, speed: 0.6, deathQuip: '"Patched by community!"' },
-  { name: 'DRM', label: 'DRM', emoji: '🔒', color: '#a55eea', points: 25, health: 2, speed: 0.6, deathQuip: '"DRM? More like DRMeh..."' },
-  { name: 'BIG UPDATE', label: '40GB\nUPDATE', emoji: '💾', color: '#5f27cd', points: 30, health: 3, speed: 0.5, deathQuip: '"40GB update DENIED!"' },
-  { name: 'APPLE TAX', label: 'APPLE\nTAX', emoji: '💸', color: '#00d2d3', points: 35, health: 3, speed: 0.5, deathQuip: '"Apple Tax? More like Crapple Tax!"' },
-  { name: 'BLOATWARE', label: 'BLOAT', emoji: '🗑️', color: '#ff6348', points: 40, health: 4, speed: 0.4, deathQuip: '"Bloat? sudo rm -rf!"' },
-  { name: 'BSOD', label: 'BSOD', emoji: '💀', color: '#0078d4', points: 50, health: 5, speed: 0.3, deathQuip: '"Blue Screen of YAWN!"' },
+  { name: 'ADS', label: 'PUBS', emoji: '📢', color: '#ff6b6b', points: 10, health: 1, speed: 1, 
+    deathQuip: '"Votre période d’essai est terminée !"' },
+
+  { name: 'FORCE UPDATES', label: 'MAJ\nFORCÉES', emoji: '🔄', color: '#ffd93d', points: 15, health: 1, speed: 0.8, 
+    deathQuip: '"Mise à jour… non je rigole, vive la liberté !"' },
+
+  { name: 'LICENSE', label: 'LICENCE', emoji: '📜', color: '#ff9f43', points: 20, health: 2, speed: 0.7, 
+    deathQuip: '"Pas de licence ? Pas de souci avec le Libre !"' },
+
+  { name: 'VULNERABILITY', label: 'VULN', emoji: '🔓', color: '#ee5a5a', points: 25, health: 2, speed: 0.6, 
+    deathQuip: '"Corrigé par la communauté !"' },
+
+  { name: 'DRM', label: 'DRM', emoji: '🔒', color: '#a55eea', points: 25, health: 2, speed: 0.6, 
+    deathQuip: '"DRM ? Plutôt DRMeh…"' },
+
+  { name: 'BIG UPDATE', label: 'MAJ\n40GB', emoji: '💾', color: '#5f27cd', points: 30, health: 3, speed: 0.5, 
+    deathQuip: '"Mise à jour de 40GB REFUSÉE !"' },
+
+  { name: 'APPLE TAX', label: 'APPLE\nTAX', emoji: '💸', color: '#00d2d3', points: 35, health: 3, speed: 0.5, 
+    deathQuip: '"Apple Tax ? Plutôt Crapple Tax !"' },
+
+  { name: 'BLOATWARE', label: 'BOUFFE\nRAM', emoji: '🗑️', color: '#ff6348', points: 40, health: 4, speed: 0.4, 
+    deathQuip: '"Bloat ? sudo rm -rf !"' },
+
+  { name: 'BSOD', label: 'BSOD', emoji: '💀', color: '#0078d4', points: 50, health: 5, speed: 0.3, 
+    deathQuip: '"Écran bleu de la MORT… ou de l’ENNUI !"'},
 ];
 
-// Power-up types
+// Types de power-ups
 const POWERUP_TYPES = [
-  { name: 'PackageManager', emoji: '📦', effect: 'fireRate', description: 'apt-get install dakka!' },
-  { name: 'CommunityPatch', emoji: '🛡️', effect: 'shield', description: 'Community shield activated!' },
-  { name: 'RefurbishedParts', emoji: '🔧', effect: 'ram', description: '+RAM from the community!' },
-  { name: 'OpenSourceLove', emoji: '❤️', effect: 'health', description: 'FOSS heals all wounds!' },
+  { name: 'PackageManager', emoji: '📦', effect: 'fireRate', 
+    description: 'apt-get install dakka !' },
+
+  { name: 'CommunityPatch', emoji: '🛡️', effect: 'shield', 
+    description: 'Bouclier communautaire activé !' },
+
+  { name: 'RefurbishedParts', emoji: '🔧', effect: 'ram', 
+    description: '+RAM grâce au réemploi !' },
+
+  { name: 'OpenSourceLove', emoji: '❤️', effect: 'health', 
+    description: 'Le Libre guérit tout !' },
 ];
 
-// Upgrade thresholds
+// Seuils d'amélioration
 const UPGRADE_THRESHOLDS = [
-  { score: 100, type: 'ram', value: '8 GB', quip: 'RAM upgrade! More tabs = more power!' },
-  { score: 300, type: 'disk', value: 'SSD', quip: 'SSD installed! Blazing fast boot!' },
-  { score: 600, type: 'cpu', value: 'Dual Core', quip: 'CPU upgrade! Multitasking intensifies!' },
-  { score: 1000, type: 'ram', value: '16 GB', quip: 'MOAR RAM! Chrome who?' },
-  { score: 1500, type: 'cpu', value: 'Quad Core', quip: 'Quad core! Maximum penguin power!' },
-  { score: 2500, type: 'gpu', value: 'Integrated', quip: 'GPU unlocked! Gaming on Linux!' },
+  { score: 100, type: 'ram', value: '8 Go', 
+    quip: 'Amélioration RAM ! Plus d’onglets = plus de puissance !' },
+
+  { score: 300, type: 'disk', value: 'SSD', 
+    quip: 'SSD installé ! Démarrage ultra-rapide !' },
+
+  { score: 600, type: 'cpu', value: 'Double Cœur', 
+    quip: 'CPU amélioré ! Le multitâche décolle !' },
+
+  { score: 1000, type: 'ram', value: '16 Go', 
+    quip: 'ENCORE PLUS de RAM ! Chrome peut venir !' },
+
+  { score: 1500, type: 'cpu', value: 'Quad Core', 
+    quip: 'Quad Core ! Puissance maximale du manchot !' },
+
+  { score: 2500, type: 'gpu', value: 'Intégrée', 
+    quip: 'GPU activé ! Le gaming sous Linux commence !' },
 ];
 
-// Meme captions
+// Memes affichés
 const MEME_CAPTIONS = [
-  { text: 'I use Arch btw', emoji: '🐧' },
-  { text: 'sudo make me a sandwich', emoji: '🥪' },
+  { text: 'J’utilise Arch btw', emoji: '🐧' },
+  { text: 'sudo fais-moi un sandwich', emoji: '🥪' },
   { text: 'rm -rf windows/', emoji: '🗑️' },
-  { text: 'Linux is free if your time is worthless', emoji: '⏰' },
-  { text: 'Year of the Linux Desktop!', emoji: '🎉' },
-  { text: 'It works on my machine', emoji: '🤷' },
-  { text: 'Have you tried turning it off and on again?', emoji: '🔌' },
-  { text: 'GNU/Linux intensifies', emoji: '🦬' },
-  { text: 'btw I compiled my kernel', emoji: '⚙️' },
-  { text: 'Tux > Windows Penguin', emoji: '🏆' },
+  { text: 'Linux est gratuit… si ton temps ne compte pas 😅', emoji: '⏰' },
+  { text: 'C’est l’année du bureau Linux !', emoji: '🎉' },
+  { text: 'Ça marche sur MA machine', emoji: '🤷' },
+  { text: 'As-tu essayé de l’éteindre et rallumer ?', emoji: '🔌' },
+  { text: 'GNU/Linux intensifie', emoji: '🦬' },
+  { text: 'Au fait, j’ai compilé mon noyau', emoji: '⚙️' },
+  { text: 'Tux > Le pingouin de Windows', emoji: '🏆' },
 ];
 
 // ============================================================================
@@ -190,7 +225,7 @@ const TuxResistance: React.FC = () => {
   const spawnEnemy = useCallback((state: GameState, now: number) => {
     if (now - lastSpawnRef.current < GAME_CONFIG.SPAWN_RATE / state.level) return;
     
-    const availableTypes = ENEMY_TYPES.filter((_, i) => i < Math.min(state.level + 1, ENEMY_TYPES.length));
+    const availableTypes = ENEMY_TYPES.filter((_, i) => i < ENEMY_TYPES.length);
     const type = availableTypes[Math.floor(Math.random() * availableTypes.length)];
     
     state.enemies.push({
@@ -603,133 +638,138 @@ const TuxResistance: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-background p-4 scanlines crt-flicker">
-      {/* Title */}
-      <h1 className="font-pixel text-xl md:text-2xl text-primary text-glow-intense mb-4 animate-pulse-glow">
-        TUX'S RESISTANCE
-      </h1>
+<div className="relative flex flex-col items-center justify-center min-h-screen p-4 scanlines crt-flicker">
+  {/* Titre */}
+  <h1 className="font-pixel text-xl md:text-2xl text-black text-primary text-glow-intense mb-4 animate-pulse-glow">
+    LA RÉSISTANCE DE TUX
+  </h1>
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start">
-        {/* Left HUD */}
-        <div className="hud-panel rounded-lg p-4 w-full lg:w-48 space-y-3">
-          <div className="text-xs text-muted-foreground uppercase tracking-wider">School PC Specs</div>
-          
-          <div className="space-y-2">
-            <StatDisplay 
-              label="RAM" 
-              value={displayState.ram} 
-              highlight={displayState.upgradeAnimation === 'ram'} 
-            />
-            <StatDisplay 
-              label="Disk" 
-              value={displayState.disk} 
-              highlight={displayState.upgradeAnimation === 'disk'} 
-            />
-            <StatDisplay 
-              label="CPU" 
-              value={displayState.cpu} 
-              highlight={displayState.upgradeAnimation === 'cpu'} 
-            />
-            <StatDisplay 
-              label="GPU" 
-              value={displayState.gpu} 
-              highlight={displayState.upgradeAnimation === 'gpu'} 
-            />
-          </div>
+  <div className="flex flex-col lg:flex-row gap-4 items-start">
+    {/* HUD gauche */}
+    <div className="hud-panel rounded-lg p-4 w-full lg:w-48 space-y-3 bg-black">
+      <div className="text-xs text-muted-foreground uppercase tracking-wider">
+        Spécifications du PC Scolaire
+      </div>
 
-          <div className="border-t border-border pt-3">
-            <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Health</span>
-              <span className="text-primary">{displayState.health}%</span>
-            </div>
-            <div className="stat-bar h-2 rounded mt-1">
-              <div 
-                className="stat-bar-fill h-full rounded transition-all duration-300"
-                style={{ width: `${displayState.health}%` }}
-              />
-            </div>
-          </div>
+      <div className="space-y-2">
+        <StatDisplay 
+          label="RAM" 
+          value={displayState.ram} 
+          highlight={displayState.upgradeAnimation === 'ram'} 
+        />
+        <StatDisplay 
+          label="Disque" 
+          value={displayState.disk} 
+          highlight={displayState.upgradeAnimation === 'disk'} 
+        />
+        <StatDisplay 
+          label="CPU" 
+          value={displayState.cpu} 
+          highlight={displayState.upgradeAnimation === 'cpu'} 
+        />
+        <StatDisplay 
+          label="GPU" 
+          value={displayState.gpu} 
+          highlight={displayState.upgradeAnimation === 'gpu'} 
+        />
+      </div>
+
+      <div className="border-t border-border pt-3">
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">Santé</span>
+          <span className="text-primary">{displayState.health}%</span>
         </div>
-
-        {/* Game Canvas */}
-        <div className="relative">
-          <canvas
-            ref={canvasRef}
-            width={GAME_CONFIG.WIDTH}
-            height={GAME_CONFIG.HEIGHT}
-            className="retro-border rounded-lg"
-            style={{ maxWidth: '100%', height: 'auto' }}
+        <div className="stat-bar h-2 rounded mt-1">
+          <div 
+            className="stat-bar-fill h-full rounded transition-all duration-300"
+            style={{ width: `${displayState.health}%` }}
           />
-          
-          {/* Quip overlay */}
-          {displayState.quip && (
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-card/90 border border-primary/50 rounded px-4 py-2 text-sm text-primary text-glow animate-float">
-              {displayState.quip}
-            </div>
-          )}
-
-          {/* Game Over overlay */}
-          {displayState.gameOver && (
-            <div className="absolute inset-0 bg-background/90 flex flex-col items-center justify-center rounded-lg">
-              <h2 className="font-pixel text-2xl text-destructive mb-4">SYSTEM CRASH!</h2>
-              <p className="text-foreground mb-2">Final Score: {displayState.score}</p>
-              <p className="text-muted-foreground text-sm mb-4 max-w-md text-center px-4">
-                💡 Pro tip: With NIRD, switching to Linux saves costs & extends hardware life. 
-                No more forced updates or expensive licenses!
-              </p>
-              <button
-                onClick={restartGame}
-                className="bg-primary text-primary-foreground px-6 py-2 rounded font-pixel text-xs hover:bg-primary/80 transition-colors"
-              >
-                REBOOT
-              </button>
-            </div>
-          )}
         </div>
+      </div>
+    </div>
 
-        {/* Right HUD */}
-        <div className="hud-panel rounded-lg p-4 w-full lg:w-48 space-y-3">
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span className="text-xs text-muted-foreground uppercase">Score</span>
-              <span className="font-pixel text-sm text-primary text-glow">{displayState.score}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-xs text-muted-foreground uppercase">Level</span>
-              <span className="font-pixel text-sm text-secondary text-glow-cyan">{displayState.level}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-xs text-muted-foreground uppercase">Community</span>
-              <span className="font-pixel text-sm text-accent">{displayState.communityPoints}</span>
-            </div>
-          </div>
+    {/* Canvas du jeu */}
+    <div className="relative">
+      <canvas
+        ref={canvasRef}
+        width={GAME_CONFIG.WIDTH}
+        height={GAME_CONFIG.HEIGHT}
+        className="retro-border rounded-lg"
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
+      
+      {/* Quip / réplique drôle */}
+      {displayState.quip && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-card/90 border border-primary/50 rounded px-4 py-2 text-sm text-primary text-glow animate-float">
+          {displayState.quip}
+        </div>
+      )}
 
-          {/* Meme Panel */}
-          <div className="border-t border-border pt-3">
-            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Meme of the Moment</div>
-            <div className="bg-muted/50 rounded p-2 text-center">
-              <div className="text-2xl mb-1">{displayState.meme.emoji}</div>
-              <div className="text-xs text-foreground">{displayState.meme.text}</div>
-            </div>
-          </div>
+      {/* Écran Game Over */}
+      {displayState.gameOver && (
+        <div className="absolute inset-0 bg-background/90 flex flex-col items-center justify-center rounded-lg">
+          <h2 className="font-pixel text-2xl text-destructive mb-4">CRASH SYSTÈME !</h2>
+          <p className="text-foreground mb-2">Score final : {displayState.score}</p>
+          <p className="text-muted-foreground text-sm mb-4 max-w-md text-center px-4">
+            💡 Astuce : Avec NIRD, passer à Linux permet d’économiser et de faire durer le matériel. 
+            Plus de mises à jour forcées ou de licences hors de prix !
+          </p>
+          <button
+            onClick={restartGame}
+            className="bg-primary bg-blue-500 text-white px-6 py-2 rounded font-pixel text-xs hover:bg-primary/80 transition-colors"
+          >
+            REDÉMARRER
+          </button>
+        </div>
+      )}
+    </div>
 
-          {/* Controls */}
-          <div className="border-t border-border pt-3">
-            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Controls</div>
-            <div className="text-xs text-muted-foreground space-y-1">
-              <div>← → or A/D: Move</div>
-              <div>SPACE/Click: Shoot</div>
-            </div>
-          </div>
+    {/* HUD droite */}
+    <div className="hud-panel rounded-lg p-4 w-full bg-black lg:w-48 space-y-3">
+      <div className="space-y-2">
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground uppercase">Score</span>
+          <span className="font-pixel text-sm text-primary text-glow">{displayState.score}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground uppercase">Niveau</span>
+          <span className="font-pixel text-sm text-secondary text-glow-cyan">{displayState.level}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground uppercase">Communauté</span>
+          <span className="font-pixel text-sm text-accent">{displayState.communityPoints}</span>
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="mt-4 text-xs text-muted-foreground text-center">
-        <span className="text-primary">🐧</span> Powered by Open Source & Community Love <span className="text-primary">🐧</span>
-        <br />
-       </div>
+      {/* Meme du moment */}
+      <div className="border-t border-border pt-3">
+        <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">
+          Mème du Moment
+        </div>
+        <div className="bg-muted/50 rounded p-2 text-center">
+          <div className="text-2xl mb-1">{displayState.meme.emoji}</div>
+          <div className="text-xs text-foreground">{displayState.meme.text}</div>
+        </div>
+      </div>
+
+      {/* Contrôles */}
+      <div className="border-t border-border pt-3">
+        <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Contrôles</div>
+        <div className="text-xs text-muted-foreground space-y-1">
+          <div>← → ou A/D : Se déplacer</div>
+          <div>ESPACE / Clic : Tirer</div>
+        </div>
+      </div>
     </div>
+  </div>
+
+  {/* Footer */}
+  <div className="mt-4 text-xs text-black text-center">
+    <span className="text-primary">🐧</span> Propulsé par l’Open Source & l’Amour de la Communauté <span className="text-primary">🐧</span>
+    <br />
+  </div>
+</div>
+
   );
 };
 
