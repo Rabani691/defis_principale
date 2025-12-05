@@ -640,8 +640,10 @@ const TuxResistance: React.FC = () => {
   return (
 <div className="relative flex flex-col items-center justify-center min-h-screen p-4 scanlines crt-flicker">
   {/* Titre */}
-  <h1 className="font-pixel text-xl md:text-2xl text-black text-primary text-glow-intense mb-4 animate-pulse-glow">
-    LA RÉSISTANCE DE TUX
+  <h1 className="font-pixel  text-xl md:text-2xl text-black text-primary text-glow-intense mb-4 animate-pulse-glow">
+Lève-toi, Guerrier Pingouin !
+Le monde se noie sous les pubs, les mises à jour forcées et les licences hors de prix.
+Toi seul peux restaurer la liberté numérique
   </h1>
 
   <div className="flex flex-col lg:flex-row gap-4 items-start">
