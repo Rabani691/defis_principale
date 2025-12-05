@@ -106,6 +106,8 @@ export default function HomePage() {
     Array<{ role: "user" | "assistant"; content: string }>
   >([]);
   const [inputMessage, setInputMessage] = useState("");
+  const [showSubmenu, setShowSubmenu] = useState(false);
+
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -162,7 +164,32 @@ export default function HomePage() {
 
             <nav className="flex gap-2 flex-wrap">
               <Anchor href="#overview" label="Vue d'ensemble" />
-              <Anchor href="#factors" label="Comparatif détaillé" />
+              <button
+                onClick={() => setShowSubmenu(!showSubmenu)}
+                className="px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all"
+              >
+                Comparatif détaillé ▾
+              </button>
+              {showSubmenu && (
+                <div className="absolute mt-2 bg-white shadow-lg border border-slate-200 rounded-xl p-3 z-50">
+                  <div className="flex flex-col gap-1 w-64">
+                    {FACTORS.map((factor) => (
+                      <a
+                        key={factor.id}
+                        href={`#${factor.id}`}
+                        onClick={() => setShowSubmenu(false)}
+                        className="px-3 py-2 rounded-lg text-sm text-slate-700 hover:bg-slate-100 transition"
+                      >
+                        {factor.title}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+
+              
+
               <a
                 // onClick={() => setShowChat(true)}
                 href="https://chatbruti-404.vercel.app/"
@@ -257,18 +284,24 @@ export default function HomePage() {
           </div>
 
           <div className="space-y-10">
-            {FACTORS.map((factor, index) => (
-              <FactorCard
-                key={factor.id}
-                index={index + 1}
-                title={factor.title}
-                linuxText={factor.linuxText}
-                othersText={factor.othersText}
-                memeSrc={factor.memeSrc}
-                focusedOS={focusedOS}
-              />
-            ))}
-          </div>
+        {FACTORS.map((factor, index) => (
+          <section
+            key={factor.id}
+            id={factor.id}
+            className="scroll-mt-28"
+          >
+            <FactorCard
+              index={index + 1}
+              title={factor.title}
+              linuxText={factor.linuxText}
+              othersText={factor.othersText}
+              memeSrc={factor.memeSrc}
+              focusedOS={focusedOS}
+            />
+          </section>
+        ))}
+      </div>
+
         </section>
       </main>
 
